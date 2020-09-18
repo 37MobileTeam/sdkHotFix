@@ -1,0 +1,21 @@
+apply plugin: 'com.sq.plugin'
+
+config {
+    //名称替换映射
+    nameMap = ["com.sq.mobile.sqsdk.SqWanCore": "com.sq.mobile.sqsdk.SqWanCoreImpl"]
+
+    //不处理的第三方activity过滤
+    activityFilter = []
+
+    //需要删除的class列表，规避虚拟机加载规则
+    deleteClassList = [
+            "com.sq.plugin.standard.*",
+            "com.sq.mobile.commonpluhostandsqsdk.SQSdkInterface"
+    ]
+
+    //第三方不打入插件的jar包过滤
+    filterLocalJar = [
+            "android-support-v4.jar"
+    ]
+
+}

@@ -1,0 +1,45 @@
+//apply plugin: 'com.android.library'
+
+//todo（1）原SDK会被当成插件apk方式
+apply plugin: 'com.android.application'
+
+//todo （2）把原本对外的《SqWanCore》名字改为《SQwanCoreImpl》，对内给宿主使用，然后统一宿主对外
+apply from: 'plugin-config.gradle'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.0"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        //todo（3）原SDK会被当成插件apk方式
+        applicationId "com.sy37.sdk.demo"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project(':features1')
+    implementation project(':features2')
+    implementation project(':commonpluhostandsqsdk')
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

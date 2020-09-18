@@ -1,0 +1,2 @@
+include ':app', ':sqsdk', ':features1', ':features2', ':pluhost', ':commonpluhostandsqsdk', ':plugin', ':plugin_standard', ':buildSrc'
+rootProject.name = 'sdkHotFix'
